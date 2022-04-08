@@ -26,7 +26,7 @@ This project is a skeleton project for using [HAPI FHIR](https://hapifhir.io) to
 
 ### Intermediate Tasks:
 
-* [ ] Create a text file containing 20 different last names
+* [ ] Create a text file containing 20 different last names *check*
 
 * [ ] Modify 'SampleClient' so that instead of searching for patients with last name 'SMITH',
       it reads in the contents of this file and for each last name queries for patients with that last name

@@ -29,6 +29,20 @@ public class basicSampleClient {
 
         // getData() gather the data from the url        
         List<Patient> patients = getData(response);
+        printer(patients);
+        
+    }
+
+    // getData() gather the data from the url  
+    // uses function mapper here to turn bundle object to list of data
+    public static List<Patient> getData(Bundle response) {
+        List<Patient> patients = new ArrayList<>();
+        patients = response.getEntry().stream().map(
+                e -> ((Patient) e.getResource())).collect(Collectors.toList());
+        return patients;
+    }
+
+    public static void printer(List<Patient> patients) {
         // pToSort is the patient data need to be sorted
         // I dup it later on as sortP, so the original data will not be modified
         List<ArrayList<String>> pToSort = new ArrayList<>();
@@ -73,15 +87,6 @@ public class basicSampleClient {
             System.out.printf("%-15s %-15s %s \n", s.get(0), s.get(1), s.get(2));
         }
         System.out.println("--------------------After Sorting Finish--------------------");
-    }
-
-    // getData() gather the data from the url  
-    // uses function mapper here to turn bundle object to list of data
-    public static List<Patient> getData(Bundle response) {
-        List<Patient> patients = new ArrayList<>();
-        patients = response.getEntry().stream().map(
-                e -> ((Patient) e.getResource())).collect(Collectors.toList());
-        return patients;
     }
     
 }
