@@ -2,9 +2,15 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.LoggingInterceptor;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Patient;
 
-public class SampleClient {
+
+import java.util.stream.Collectors;
+import java.util.*;
+
+
+public class modifiedSampleClient {
 
     public static void main(String[] theArgs) {
 
@@ -20,8 +26,5 @@ public class SampleClient {
                 .where(Patient.FAMILY.matches().value("SMITH"))
                 .returnBundle(Bundle.class)
                 .execute();
-
-
     }
-
 }
